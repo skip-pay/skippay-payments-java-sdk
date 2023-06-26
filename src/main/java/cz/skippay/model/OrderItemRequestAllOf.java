@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import cz.skippay.model.Amount;
+import cz.skippay.model.FileRequest;
 import cz.skippay.model.VatAmount;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -51,11 +52,11 @@ import cz.skippay.JSON;
 /**
  * OrderItemRequestAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:07:32.599404+02:00[Europe/Prague]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
 public class OrderItemRequestAllOf {
   public static final String SERIALIZED_NAME_IMAGE = "image";
   @SerializedName(SERIALIZED_NAME_IMAGE)
-  private String image;
+  private FileRequest image;
 
   public static final String SERIALIZED_NAME_UNIT_PRICE = "unitPrice";
   @SerializedName(SERIALIZED_NAME_UNIT_PRICE)
@@ -72,23 +73,23 @@ public class OrderItemRequestAllOf {
   public OrderItemRequestAllOf() {
   }
 
-  public OrderItemRequestAllOf image(String image) {
+  public OrderItemRequestAllOf image(FileRequest image) {
     
     this.image = image;
     return this;
   }
 
    /**
-   * Either URL to the file or base64 encoded file content
+   * Get image
    * @return image
   **/
   @javax.annotation.Nullable
-  public String getImage() {
+  public FileRequest getImage() {
     return image;
   }
 
 
-  public void setImage(String image) {
+  public void setImage(FileRequest image) {
     this.image = image;
   }
 
@@ -237,8 +238,9 @@ public class OrderItemRequestAllOf {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OrderItemRequestAllOf` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) && !jsonObj.get("image").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `image` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image").toString()));
+      // validate the optional field `image`
+      if (jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) {
+        FileRequest.validateJsonObject(jsonObj.getAsJsonObject("image"));
       }
       // validate the optional field `unitPrice`
       if (jsonObj.get("unitPrice") != null && !jsonObj.get("unitPrice").isJsonNull()) {

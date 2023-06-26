@@ -19,7 +19,7 @@ Order item information, needed to create an application.
 |**totalPrice** | [**Amount**](Amount.md) |  |  |
 |**totalVat** | [**VatAmount**](VatAmount.md) |  |  |
 |**productUrl** | **String** | URL of the item in e-shop |  [optional] |
-|**image** | **String** | Either URL to the file or base64 encoded file content |  [optional] |
+|**image** | [**FileRequest**](FileRequest.md) |  |  [optional] |
 |**unitPrice** | [**Amount**](Amount.md) |  |  [optional] |
 |**unitVat** | [**VatAmount**](VatAmount.md) |  |  [optional] |
 |**quantity** | **BigDecimal** | (positive float/decimal up to 3 decimal places) Item quantity. If empty, considered as 1. |  [optional] |

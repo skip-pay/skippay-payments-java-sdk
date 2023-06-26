@@ -61,7 +61,7 @@ import cz.skippay.JSON;
 /**
  * Order with additional information about Application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:07:32.599404+02:00[Europe/Prague]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
 public class OrderExtendedResponse {
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
@@ -682,6 +682,10 @@ public class OrderExtendedResponse {
             Address.validateJsonObject(jsonArrayaddresses.get(i).getAsJsonObject());
           };
         }
+      }
+      // validate the optional field `deliveryCarrier`
+      if (jsonObj.get("deliveryCarrier") != null && !jsonObj.get("deliveryCarrier").isJsonNull()) {
+        DeliveryCarrier.validateJsonObject(jsonObj.getAsJsonObject("deliveryCarrier"));
       }
       if ((jsonObj.get("reservationDate") != null && !jsonObj.get("reservationDate").isJsonNull()) && !jsonObj.get("reservationDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reservationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reservationDate").toString()));

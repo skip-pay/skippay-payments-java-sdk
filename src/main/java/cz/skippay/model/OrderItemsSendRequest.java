@@ -56,7 +56,7 @@ import cz.skippay.JSON;
 /**
  * Object used to mark order items as sent.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:07:32.599404+02:00[Europe/Prague]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
 public class OrderItemsSendRequest {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
@@ -438,6 +438,10 @@ public class OrderItemsSendRequest {
       }
       if ((jsonObj.get("specificSymbol") != null && !jsonObj.get("specificSymbol").isJsonNull()) && !jsonObj.get("specificSymbol").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `specificSymbol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("specificSymbol").toString()));
+      }
+      // validate the optional field `deliveryCarrier`
+      if (jsonObj.get("deliveryCarrier") != null && !jsonObj.get("deliveryCarrier").isJsonNull()) {
+        DeliveryCarrier.validateJsonObject(jsonObj.getAsJsonObject("deliveryCarrier"));
       }
       if ((jsonObj.get("deliveryTrackingNumber") != null && !jsonObj.get("deliveryTrackingNumber").isJsonNull()) && !jsonObj.get("deliveryTrackingNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deliveryTrackingNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deliveryTrackingNumber").toString()));

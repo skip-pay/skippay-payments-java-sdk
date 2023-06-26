@@ -58,10 +58,10 @@ import cz.skippay.auth.ApiKeyAuth;
  */
 public class ApiClient {
 
-    private String basePath = "https://api.partner.mallpay.cz";
+    private String basePath = "https://api.partner.skippay.cz";
     protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
     new ServerConfiguration(
-      "https://api.partner.mallpay.cz",
+      "https://api.partner.skippay.cz",
       "No description provided",
       new HashMap<String, ServerVariable>()
     )
@@ -155,7 +155,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://api.partner.mallpay.cz
+     * @param basePath Base path of the URL (e.g https://api.partner.skippay.cz
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

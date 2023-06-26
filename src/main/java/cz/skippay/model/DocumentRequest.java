@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import cz.skippay.model.DocumentExtraData;
 import cz.skippay.model.DocumentSerializer;
+import cz.skippay.model.FileRequest;
 import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -51,7 +52,7 @@ import cz.skippay.JSON;
 /**
  * Attached document (e.g. invoice, credit note etc.)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:07:32.599404+02:00[Europe/Prague]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
 public class DocumentRequest {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -59,7 +60,7 @@ public class DocumentRequest {
 
   public static final String SERIALIZED_NAME_FILE = "file";
   @SerializedName(SERIALIZED_NAME_FILE)
-  private String _file;
+  private FileRequest _file;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -93,23 +94,23 @@ public class DocumentRequest {
   }
 
 
-  public DocumentRequest _file(String _file) {
+  public DocumentRequest _file(FileRequest _file) {
     
     this._file = _file;
     return this;
   }
 
    /**
-   * Either URL to the file or base64 encoded file content
+   * Get _file
    * @return _file
   **/
   @javax.annotation.Nonnull
-  public String getFile() {
+  public FileRequest getFile() {
     return _file;
   }
 
 
-  public void setFile(String _file) {
+  public void setFile(FileRequest _file) {
     this._file = _file;
   }
 
@@ -256,9 +257,8 @@ public class DocumentRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("file").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `file` to be a primitive type in the JSON string but got `%s`", jsonObj.get("file").toString()));
-      }
+      // validate the required field `file`
+      FileRequest.validateJsonObject(jsonObj.getAsJsonObject("file"));
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }

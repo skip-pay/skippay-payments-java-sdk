@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import cz.skippay.model.Amount;
+import cz.skippay.model.FileRequest;
 import cz.skippay.model.ItemType;
 import cz.skippay.model.VatAmount;
 import java.io.IOException;
@@ -55,7 +56,7 @@ import cz.skippay.JSON;
 /**
  * Order item information, needed to create an application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:07:32.599404+02:00[Europe/Prague]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
 public class OrderItemRequest {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -103,7 +104,7 @@ public class OrderItemRequest {
 
   public static final String SERIALIZED_NAME_IMAGE = "image";
   @SerializedName(SERIALIZED_NAME_IMAGE)
-  private String image;
+  private FileRequest image;
 
   public static final String SERIALIZED_NAME_UNIT_PRICE = "unitPrice";
   @SerializedName(SERIALIZED_NAME_UNIT_PRICE)
@@ -359,23 +360,23 @@ public class OrderItemRequest {
   }
 
 
-  public OrderItemRequest image(String image) {
+  public OrderItemRequest image(FileRequest image) {
     
     this.image = image;
     return this;
   }
 
    /**
-   * Either URL to the file or base64 encoded file content
+   * Get image
    * @return image
   **/
   @javax.annotation.Nullable
-  public String getImage() {
+  public FileRequest getImage() {
     return image;
   }
 
 
-  public void setImage(String image) {
+  public void setImage(FileRequest image) {
     this.image = image;
   }
 
@@ -608,8 +609,9 @@ public class OrderItemRequest {
       if ((jsonObj.get("productUrl") != null && !jsonObj.get("productUrl").isJsonNull()) && !jsonObj.get("productUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productUrl").toString()));
       }
-      if ((jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) && !jsonObj.get("image").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `image` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image").toString()));
+      // validate the optional field `image`
+      if (jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) {
+        FileRequest.validateJsonObject(jsonObj.getAsJsonObject("image"));
       }
       // validate the optional field `unitPrice`
       if (jsonObj.get("unitPrice") != null && !jsonObj.get("unitPrice").isJsonNull()) {
