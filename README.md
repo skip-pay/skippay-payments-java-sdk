@@ -7,7 +7,7 @@ API documentation for Skip Pay partners.
 - Package version: 
 - Build date: 2023-06-26T12:24:35.068083+02:00[Europe/Prague]
 
-For more information, please visit [https://www.skippay.cz](https://www.skippay.cz)
+For more information, please visit [our developer portal](https://www.developers.skippay.cz) 
 
 ## Requirements
 
