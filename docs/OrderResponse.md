@@ -13,7 +13,7 @@
 |**totalVat** | [**List&lt;VatAmount&gt;**](VatAmount.md) | Total VAT amounts split by their VAT rates. |  |
 |**addresses** | [**List&lt;Address&gt;**](Address.md) | Addresses. Only &#x60;BILLING&#x60; and &#x60;DELIVERY&#x60; types are allowed. |  [optional] |
 |**deliveryType** | **DeliveryType** |  |  [optional] |
-|**deliveryCarrier** | **DeliveryCarrier** |  |  [optional] |
+|**deliveryCarrier** | [**DeliveryCarrier**](DeliveryCarrier.md) |  |  [optional] |
 |**reservationDate** | **String** | Date and time until order is reserved.  Until &#39;reservationDate&#39; Skip Pay will try to notify partner with Application notification about approval or rejection.  After this date and time, e-shop does not guarantee items availability (if application processing is longer, it may endanger order fullfillment). |  [optional] |
 |**state** | **OrderDeliveryState** |  |  |
 |**deliveryDate** | **LocalDate** | Date and time of delivery |  |

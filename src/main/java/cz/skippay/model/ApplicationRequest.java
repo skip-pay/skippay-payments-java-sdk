@@ -54,7 +54,7 @@ import cz.skippay.JSON;
 /**
  * ApplicationRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:07:32.599404+02:00[Europe/Prague]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
 public class ApplicationRequest {
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
@@ -165,7 +165,7 @@ public class ApplicationRequest {
   }
 
    /**
-   * Array of all precheck ids related to this application. See [Precheck operation](#reference/precheck-operations/precheck) and it&#39;s response (PrecheckResultsResponse).
+   * Array of all precheck ids related to this application. See [Precheck operation](htttps://developers.skippay.cz/docs/api/precheck) and it&#39;s response (PrecheckResultsResponse).
    * @return precheckIds
   **/
   @javax.annotation.Nullable

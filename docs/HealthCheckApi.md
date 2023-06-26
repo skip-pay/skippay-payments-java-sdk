@@ -1,6 +1,6 @@
 # HealthCheckApi
 
-All URIs are relative to *https://api.partner.mallpay.cz*
+All URIs are relative to *https://api.partner.skippay.cz*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -13,7 +13,7 @@ All URIs are relative to *https://api.partner.mallpay.cz*
 
 API health check
 
-If the API back-end services are up and runing, you receive HTTP status code 200 with optional version info.  In other cases, you may receive errors similar to the following ones: | Status code | Description                                             | | ---         | ---                                                     | | 503         | &#x60;Service Unavailable&#x60; - there is planned service outage |  &gt; Note: resource DOES NOT require valid *access_token* in the HTTP header of the requestGet current state of the API
+If the API back-end services are up and runing, you receive HTTP status code 200 with optional version info.  In other cases, you may receive errors similar to the following ones:    | Status code | Description                                             | | ---         | ---                                                     | | 503         | &#x60;Service Unavailable&#x60; - there is planned service outage |  &gt; Note: resource DOES NOT require valid *access_token* in the HTTP header of the requestGet current state of the API
 
 ### Example
 ```java
@@ -28,7 +28,7 @@ import cz.skippay.api.HealthCheckApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.partner.mallpay.cz");
+    defaultClient.setBasePath("https://api.partner.skippay.cz");
     
     // Configure HTTP bearer authorization: httpBearer
     HttpBearerAuth httpBearer = (HttpBearerAuth) defaultClient.getAuthentication("httpBearer");

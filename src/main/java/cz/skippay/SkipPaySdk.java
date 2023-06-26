@@ -1,43 +1,37 @@
 package cz.skippay;
 
-import cz.skippay.api.ApplicationsApi;
+import cz.skippay.api.ApplicationOperationsApi;
 import cz.skippay.api.HealthCheckApi;
-import cz.skippay.api.MerchantsitesApi;
-import cz.skippay.api.PrecheckApi;
+import cz.skippay.api.PrecheckOperationsApi;
 import cz.skippay.api.SecurityApi;
 
 
 public class SkipPaySdk {  
   private ApiClient apiClient;
 
-  private ApplicationsApi _ApplicationsApi;
+  private ApplicationOperationsApi _ApplicationOperationsApi;
   private HealthCheckApi _HealthCheckApi;
-  private MerchantsitesApi _MerchantsitesApi;
-  private PrecheckApi _PrecheckApi;
+  private PrecheckOperationsApi _PrecheckOperationsApi;
   private SecurityApi _SecurityApi;
   
   
   public SkipPaySdk(ApiClient apiClient) {
     this.apiClient = apiClient;
-    this._ApplicationsApi = new ApplicationsApi(apiClient);
+    this._ApplicationOperationsApi = new ApplicationOperationsApi(apiClient);
     this._HealthCheckApi = new HealthCheckApi(apiClient);
-    this._MerchantsitesApi = new MerchantsitesApi(apiClient);
-    this._PrecheckApi = new PrecheckApi(apiClient);
+    this._PrecheckOperationsApi = new PrecheckOperationsApi(apiClient);
     this._SecurityApi = new SecurityApi(apiClient);
     
   }
 
-  public ApplicationsApi getApplicationsApi() {
-    return _ApplicationsApi;
+  public ApplicationOperationsApi getApplicationOperationsApi() {
+    return _ApplicationOperationsApi;
   }
   public HealthCheckApi getHealthCheckApi() {
     return _HealthCheckApi;
   }
-  public MerchantsitesApi getMerchantsitesApi() {
-    return _MerchantsitesApi;
-  }
-  public PrecheckApi getPrecheckApi() {
-    return _PrecheckApi;
+  public PrecheckOperationsApi getPrecheckOperationsApi() {
+    return _PrecheckOperationsApi;
   }
   public SecurityApi getSecurityApi() {
     return _SecurityApi;

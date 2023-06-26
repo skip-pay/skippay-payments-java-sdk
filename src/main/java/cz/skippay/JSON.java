@@ -102,7 +102,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.ApplicationResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.ApplicationResponseAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.ApplicationWithoutCustomerRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.Applicationnotificationresponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.ChangeOrderItemRequestSerializer.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.CustomerBase.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.CustomerExtraData.CustomTypeAdapterFactory());
@@ -110,11 +109,13 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.CustomerRequestAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.CustomerResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.CustomerResponseAllOf.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.DeliveryCarrier.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.DocumentExtraData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.DocumentRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.DocumentResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.ErrorsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.ErrorsResponseErrorsInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.FileRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.FileResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.Getpaymentsonspecificapplicationresponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.HealthCheckResponse.CustomTypeAdapterFactory());
@@ -147,7 +148,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.PartnerLogin.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.PartnerLoginResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.Payment.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.Paymentnotificationresponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.PrecheckAddress.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.PrecheckCustomerRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new cz.skippay.model.PrecheckCustomerRequestAllOf.CustomTypeAdapterFactory());

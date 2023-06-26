@@ -49,7 +49,7 @@ import cz.skippay.JSON;
 /**
  * Collection of URLs used for redirection of a customer back to a partner website or as a notification endpoint. Services that should be developed and exposed by partner e-shops to allow Skip Pay to asynchronously inform these partners about important changes regarding particular applications and orders.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:07:32.599404+02:00[Europe/Prague]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
 public class MerchantUrls {
   public static final String SERIALIZED_NAME_APPROVED_REDIRECT = "approvedRedirect";
   @SerializedName(SERIALIZED_NAME_APPROVED_REDIRECT)

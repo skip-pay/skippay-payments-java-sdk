@@ -19,8 +19,8 @@ import cz.skippay.model.*;
 import cz.skippay.Pair;
 
 import cz.skippay.model.ErrorsResponse;
-import cz.skippay.model.PartnerLogin;
-import cz.skippay.model.PartnerLoginResult;
+import cz.skippay.model.PrecheckRequest;
+import cz.skippay.model.PrecheckResultsResponse;
 
 
 import java.util.ArrayList;
@@ -29,14 +29,14 @@ import java.util.List;
 import java.util.Map;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
-public class SecurityApi {
+public class PrecheckOperationsApi {
   private ApiClient apiClient;
 
-  public SecurityApi() {
+  public PrecheckOperationsApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public SecurityApi(ApiClient apiClient) {
+  public PrecheckOperationsApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -49,22 +49,17 @@ public class SecurityApi {
   }
 
   /**
-   * Login partner
-   * Partner authenticate himself and obtain access token
-   * @param partnerLogin  (required)
-   * @return PartnerLoginResult
+   * Precheck
+   * Precheck *application*  Returns probability of *application's* approval and limits of particular customer, if known to Skip Pay  | Financing type     | Supported | | ---                | ---       | | `DEFERRED_PAYMENT` | YES       | | `PAY_IN_THREE`     | YES       |  It has to be called with valid access token (see the [Security section](https://developers.skippay.cz/docs/api-reference/security)) from your server. If you plan to integrate it in client flow, you should implement REST endpoint bound to your shopping basket session, that will be used as a proxy to call Skip Pay API - **NEVER put access token directly to client side**.  Possible error codes explanation:  | Status code | Code                  | Explanation                                                                     | | ---         | ---                   | ---                                                                             | | 400         | `INVALID_REQUEST`     | Request was not well formatted (malformed request syntax, size too large, etc.) | | 422         | `PERSONAL_ID_INVALID` | PersonalId is not valid                                                         |Returns probability of *application's* approval and limits of particular customer, if known to Skip Pay
+   * @param precheckRequest  (optional)
+   * @return PrecheckResultsResponse
    * @throws ApiException if fails to make API call
    */
-  public PartnerLoginResult loginpartner(PartnerLogin partnerLogin) throws ApiException {
-    Object localVarPostBody = partnerLogin;
-    
-    // verify the required parameter 'partnerLogin' is set
-    if (partnerLogin == null) {
-      throw new ApiException(400, "Missing the required parameter 'partnerLogin' when calling loginpartner");
-    }
+  public PrecheckResultsResponse precheck(PrecheckRequest precheckRequest) throws ApiException {
+    Object localVarPostBody = precheckRequest;
     
     // create path and map variables
-    String localVarPath = "/authentication/v1/partner";
+    String localVarPath = "/financing/v1/precheck";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -89,7 +84,7 @@ public class SecurityApi {
 
     String[] localVarAuthNames = new String[] { "httpBearer" };
 
-    GenericType<PartnerLoginResult> localVarReturnType = new GenericType<PartnerLoginResult>() {};
+    GenericType<PrecheckResultsResponse> localVarReturnType = new GenericType<PrecheckResultsResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

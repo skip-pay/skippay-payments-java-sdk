@@ -1,6 +1,6 @@
 # SecurityApi
 
-All URIs are relative to *https://api.partner.mallpay.cz*
+All URIs are relative to *https://api.partner.skippay.cz*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -28,7 +28,7 @@ import cz.skippay.api.SecurityApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.partner.mallpay.cz");
+    defaultClient.setBasePath("https://api.partner.skippay.cz");
     
     // Configure HTTP bearer authorization: httpBearer
     HttpBearerAuth httpBearer = (HttpBearerAuth) defaultClient.getAuthentication("httpBearer");

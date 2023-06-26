@@ -2,13 +2,13 @@ openapi: 3.0.0
 info:
   contact:
     email: info@skippay.cz
-    name: SkipPay API
+    name: Skip Pay API
     url: https://www.skippay.cz
   description: API documentation for Skip Pay partners.
   title: Skip Pay API for partners
   version: "1.0"
 servers:
-- url: https://api.partner.mallpay.cz
+- url: https://api.partner.skippay.cz
 security:
 - httpBearer: []
 tags:
@@ -16,14 +16,14 @@ tags:
   name: Security
 - description: Services that allows processing of *application* and *order* during
     their whole lifecycle.
-  name: Applications
+  name: Application operations
 - description: "Services that allow partner e-shops find out a probability of *application's*\
     \ approval and limits of particular customer, if known to Skip Pay"
-  name: Precheck
+  name: Precheck operations
 - description: |-
     Services that should be developed and exposed by partner e-shops to allow Skip Pay asynchronously inform these partner e-shops about important changes regarding particular *applications* and *orders*
     > **ATTENTION:** This set of APIs is NOT exposed from Skip Pay. Instead, it should be developed by partner and accept calls specified below.
-  name: Merchantsites
+  name: Merchantsite operations
 - description: "To check the availability of back-end services use the [health check\
     \ resource](#reference/health-check/health-check)."
   name: Health check
@@ -128,6 +128,7 @@ paths:
         __Note__: If the optional *agreementTermsAndConditions* field was not sent with the request (or it was sent with a value of `false`), the *application* will be created with *agreementTermsAndConditions* value set to `false`, *state* `PROCESSING` and *stateReason* `PROCESSING_REDIRECT_NEEDED`.
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                    | Explanation                                                                      |
         | ---         | ---                     | ---                                                                              |
         | 400         | `INVALID_REQUEST`       | Request was not well formatted (malformed request syntax, size too large, etc.)  |
@@ -159,7 +160,7 @@ paths:
           description: There was an error processing request
       summary: Create application
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/applications/{applicationId}:
@@ -176,6 +177,7 @@ paths:
         If the request was successfully processed, you receive HTTP status code 200 and *application* object.
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                    | Message                                                                          |
         | ---         | ---                     | ---                                                                              |
         | 400         | `INVALID_REQUEST`       | Request was not well formatted (malformed request syntax, size too large, etc.)  |
@@ -207,7 +209,7 @@ paths:
           description: Application does not exist
       summary: Get application detail
       tags:
-      - Applications
+      - Application operations
       x-accepts: application/json; charset=utf-8
   /financing/v1/recurrences/{recurrenceId}/applications:
     post:
@@ -261,7 +263,7 @@ paths:
           description: Recurrence could not be used or invalid input data
       summary: Create application from recurrence
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/recurrences/{recurrenceId}:
@@ -299,7 +301,7 @@ paths:
           description: There is no recurrence
       summary: Get recurrence
       tags:
-      - Applications
+      - Application operations
       x-accepts: application/json; charset=utf-8
     patch:
       deprecated: false
@@ -346,7 +348,7 @@ paths:
           description: Recurrence can not be updated
       summary: Update recurrence
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/applications/{applicationId}/cancel:
@@ -370,6 +372,7 @@ paths:
         If the request was successfully processed, you receive HTTP status code 200 and object of information about cancelled *order* plus basic information about respective *application* (ID, state, substate).
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                                  | Explanation                                                                                           |
         | ---         | ---                                   | ---                                                                                                   |
         | 400         | `INVALID_REQUEST`                     | Request was not well formatted (malformed request syntax, size too large, etc.)                       |
@@ -411,7 +414,7 @@ paths:
           description: Application can not be cancelled
       summary: Cancel application
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/applications/{applicationId}/order:
@@ -439,6 +442,7 @@ paths:
         If the request was successfully processed, you receive HTTP status code 200 and object of information about changed *order* plus basic information about respective *application* (ID, state, substate).
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                    | Explanation                                                                     |
         | ---         | ---                     | ---                                                                             |
         | 400         | `INVALID_REQUEST`       | Request was not well formatted (malformed request syntax, size too large, etc.) |
@@ -475,7 +479,7 @@ paths:
           description: Order can not be changed.
       summary: Change application order
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/applications/{applicationId}/order/cancel:
@@ -489,7 +493,7 @@ paths:
         | `DEFERRED_PAYMENT` | YES       |
         | `PAY_IN_THREE`     | YES       |
 
-        If you want to cancel some items after marking those items as sent or delivered, use [Mark order items as returned](#reference/application-operations/mark-order-items-as-returned) operation.
+        If you want to cancel some items after marking those items as sent or delivered, use [Mark order items as returned](https://developers.skippay.cz/docs/api/markorderitemsasreturned) operation.
 
         | Application state | Availability |
         | ---               | ---          |
@@ -509,6 +513,7 @@ paths:
         If the request was successfully processed, you receive HTTP status code 200 and object of information about changed *order* plus basic information about respective *application* (ID, state, substate).
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                    | Explanation                                                                      |
         | ---         | ---                     | ---                                                                              |
         | 400         | `INVALID_REQUEST`       | Request was not well formatted (malformed request syntax, size too large, etc.)  |
@@ -547,7 +552,7 @@ paths:
           description: Order items can not be canceled.
       summary: Mark order items as cancelled
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/applications/{applicationId}/order/send:
@@ -579,6 +584,7 @@ paths:
         If the request was successfully processed, you receive HTTP status code 200 and object of information about changed *order* plus basic information about respective *application* (ID, state, substate).
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                            | Explanation                                                                       |
         | ---         | ---                             | ---                                                                               |
         | 400         | `INVALID_REQUEST`               | Request was not well formatted (malformed request syntax, size too large, etc.)   |
@@ -619,7 +625,7 @@ paths:
           description: State change can not be processed
       summary: Mark order items as sent
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/applications/{applicationId}/order/deliver:
@@ -651,6 +657,7 @@ paths:
         If the request was successfully processed, you receive HTTP status code 200 and object of information about changed *order* plus basic information about respective *application* (ID, state, substate).
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                              | Explanation                                                                       |
         | ---         | ---                               | ---                                                                               |
         | 400         | `INVALID_REQUEST`                 | Request was not well formatted (malformed request syntax, size too large, etc.)   |
@@ -691,7 +698,7 @@ paths:
           description: State change can not be processed
       summary: Mark order items as delivered
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/applications/{applicationId}/order/return:
@@ -725,6 +732,7 @@ paths:
         If the request was successfully processed, you receive HTTP status code 200 and object of information about changed *order* plus basic information about respective *application* (ID, state, substate).
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                    | Explanation                                                                      |
         | ---         | ---                     | ---                                                                              |
         | 400         | `INVALID_REQUEST`       | Request was not well formatted (malformed request syntax, size too large, etc.)  |
@@ -764,7 +772,7 @@ paths:
           description: State change can not be processed
       summary: Mark order items as returned
       tags:
-      - Applications
+      - Application operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /financing/v1/applications/{applicationId}/payments:
@@ -777,11 +785,11 @@ paths:
 
         feature | supported by resource
         --- | ---
-        [paging](#header-paging) | yes
-        [sorting](#header-sorting) | no
-        [filtering](#header-filtering) | no
+        pagingheader-paging | yes
+        sortingheader-sorting | no
+        filteringheader-filtering | no
 
-        This resource supports [paging](#header-paging). As a value to `before` and `after` parameters, use `paymentId` attribute.
+        This resource supports paging. As a value to `before` and `after` parameters, use `paymentId` attribute.
 
         Collection is sorted by paymentId attribute.
       operationId: Getpaymentsonspecificapplication
@@ -811,7 +819,7 @@ paths:
           description: Application does not exist
       summary: Get payments on specific application
       tags:
-      - Applications
+      - Application operations
       x-accepts: application/json; charset=utf-8
   /financing/v1/orders:
     get:
@@ -834,6 +842,7 @@ paths:
         If the request was successfully processed, you receive HTTP status code 200 and object of information about specified *order* plus basic information about respective *application* (ID, state, substate).
 
         In other cases, you may receive errors similar to the following ones:
+
         | Status code | Code                    | Explanation                                                                      |
         | ---         | ---                     | ---                                                                              |
         | 404         | `OBJECT_NOT_FOUND`      | The requested resource could not be found                                        |
@@ -892,7 +901,7 @@ paths:
           description: Order not found
       summary: Get order
       tags:
-      - Applications
+      - Application operations
       x-accepts: application/json; charset=utf-8
   /financing/v1/precheck:
     post:
@@ -907,9 +916,10 @@ paths:
         | `DEFERRED_PAYMENT` | YES       |
         | `PAY_IN_THREE`     | YES       |
 
-        It has to be called with valid access token (see the [Security section](#reference/security)) from your server. If you plan to integrate it in client flow, you should implement REST endpoint bound to your shopping basket session, that will be used as a proxy to call Skip Pay API - **NEVER put access token directly to client side**.
+        It has to be called with valid access token (see the [Security section](https://developers.skippay.cz/docs/api-reference/security)) from your server. If you plan to integrate it in client flow, you should implement REST endpoint bound to your shopping basket session, that will be used as a proxy to call Skip Pay API - **NEVER put access token directly to client side**.
 
         Possible error codes explanation:
+
         | Status code | Code                  | Explanation                                                                     |
         | ---         | ---                   | ---                                                                             |
         | 400         | `INVALID_REQUEST`     | Request was not well formatted (malformed request syntax, size too large, etc.) |
@@ -942,133 +952,20 @@ paths:
           description: Error in processing request
       summary: Precheck
       tags:
-      - Precheck
-      x-content-type: application/json; charset=utf-8
-      x-accepts: application/json; charset=utf-8
-  /financing/v1/{application.merchantUrls.notificationEndpoint}:
-    post:
-      deprecated: false
-      description: |-
-        We use this resource when there is need to let you know about important changes within particular *application*. Namely in following situations:
-
-        | Financing type     | Supported |
-        | ---                | ---       |
-        | `DEFERRED_PAYMENT` | YES       |
-        | `PAY_IN_THREE`     | YES       |
-
-        > IMPORTANT NOTE: This service should be developed and exposed by partner e-shops to allow Skip Pay to asynchronously inform these partners about important changes regarding particular applications.
-
-        | Trigger                                                             | Corresponding Application.stateReason | Expected reaction                                                                        |
-        | ---                                                                 | ---                                   | ---                                                                                      |
-        | Application was rejected                                            | `REJECTED`                            | You should probably cancel respective order and release reserved goods                   |
-        | Application was cancelled                                           | `CANCELLED_NOT_PAID`                  | You should probably cancel respective order and release reserved goods                   |
-        | Order to dispatch (we commit to finance customer's order)           | `READY_TO_SHIP`                       | Dispatch the order to the customer                                                       |
-        | Order dispatched                                                    | `READY_SHIPPED`                       | None - serves as an acknowledgment (partner should know about this change)               |
-        | Order delivered                                                     | `READY_DELIVERED`                     | None - serves as an acknowledgment (partner should know about this change)               |
-        | Application was paid to the partner                                 | `READY_PAID`                          | Financial compensation for the application has been processed - check your bank account  |
-
-        > NOTE: READY_PAID state is set when at least part of the application price was paid to the partner, not necessarily full application price. This also applies to the `Application was paid to the partner` application notification trigger.
-
-        We fill the request with following information:
-
-        - Application unique ID
-
-        - Application state
-
-        - Application substate
-
-        > IMPORTANT: You should always double check the state of Application on `/financing/v1/applications/{applicationId}` resource due to security reasons.
-
-        If notification is not processed due to error or unavailability it is automatically sent again (retried) after 1, 5, 5, 5 a 5 minutes by default (5 tries in total).Notify partner about changes in application.
-      operationId: Applicationnotification
-      parameters:
-      - description: application.merchantUrls.notificationEndpoint
-        explode: false
-        in: path
-        name: application.merchantUrls.notificationEndpoint
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json; charset=utf-8:
-            schema:
-              $ref: '#/components/schemas/ApplicationBaseResponse'
-      responses:
-        "200":
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/Applicationnotificationresponse'
-          description: Success
-        "400":
-          content:
-            application/json; charset=utf-8:
-              schema:
-                example: Can not process changes
-                type: string
-          description: Can not process changes
-      summary: Application notification
-      tags:
-      - Merchantsites
-      x-content-type: application/json; charset=utf-8
-      x-accepts: application/json; charset=utf-8
-  /financing/v1/{application.merchantUrls.paymentEndpoint}:
-    post:
-      deprecated: false
-      description: |-
-        | Financing type     | Supported |
-        | ---                | ---       |
-        | `DEFERRED_PAYMENT` | YES       |
-        | `PAY_IN_THREE`     | YES       |Notification about new payment.
-      operationId: Paymentnotification
-      parameters:
-      - description: application.merchantUrls.paymentEndpoint
-        explode: false
-        in: path
-        name: application.merchantUrls.paymentEndpoint
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json; charset=utf-8:
-            schema:
-              $ref: '#/components/schemas/Payment'
-        description: ""
-      responses:
-        "200":
-          content:
-            application/json; charset=utf-8:
-              schema:
-                $ref: '#/components/schemas/Paymentnotificationresponse'
-          description: Success
-        "400":
-          content:
-            application/json; charset=utf-8:
-              schema:
-                example: Can not process changes
-                type: string
-          description: ""
-      summary: Payment notification
-      tags:
-      - Merchantsites
+      - Precheck operations
       x-content-type: application/json; charset=utf-8
       x-accepts: application/json; charset=utf-8
   /v1/health:
     get:
       deprecated: false
-      description: |-
-        If the API back-end services are up and runing, you receive HTTP status code 200 with optional version info.
-
-        In other cases, you may receive errors similar to the following ones:
-        | Status code | Description                                             |
-        | ---         | ---                                                     |
-        | 503         | `Service Unavailable` - there is planned service outage |
-
-        > Note: resource DOES NOT require valid *access_token* in the HTTP header of the requestGet current state of the API
+      description: "If the API back-end services are up and runing, you receive HTTP\
+        \ status code 200 with optional version info.\n\nIn other cases, you may receive\
+        \ errors similar to the following ones:\n  \n| Status code | Description \
+        \                                            |\n| ---         | ---      \
+        \                                               |\n| 503         | `Service\
+        \ Unavailable` - there is planned service outage |\n\n> Note: resource DOES\
+        \ NOT require valid *access_token* in the HTTP header of the requestGet current\
+        \ state of the API"
       operationId: APIhealthcheck
       parameters:
       - description: Content Type
@@ -1200,10 +1097,6 @@ components:
       type: object
     ApplicationBaseResponse:
       description: Financing application base information
-      example:
-        id: 11200a0ee1
-        state: PROCESSING
-        stateReason: PROCESSING_REDIRECT_NEEDED
       properties:
         id:
           description: Unique identifier in Skip Pay
@@ -1307,8 +1200,8 @@ components:
           type: boolean
         precheckIds:
           description: "Array of all precheck ids related to this application. See\
-            \ [Precheck operation](#reference/precheck-operations/precheck) and it's\
-            \ response (PrecheckResultsResponse)."
+            \ [Precheck operation](htttps://developers.skippay.cz/docs/api/precheck)\
+            \ and it's response (PrecheckResultsResponse)."
           items:
             type: string
           type: array
@@ -1351,20 +1244,18 @@ components:
             amount: 12590
             currency: CZK
           documents:
-          - file: "[\"RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==\",\"https://www.partner.com/file?id=12345\"\
-              ]"
+          - file: null
             extraData:
               variableSymbol: "1234567890"
             description: This is an invoice
             type: ""
-          - file: "[\"RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==\",\"https://www.partner.com/file?id=12345\"\
-              ]"
+          - file: null
             extraData:
               variableSymbol: "1234567890"
             description: This is an invoice
             type: ""
           deliveryType: DELIVERY_CARRIER
-          deliveryCarrier: DPD
+          deliveryCarrier: null
           reservationDate: 2017-07-15T00:00:00+02:00
           items:
           - null
@@ -1380,16 +1271,6 @@ components:
       required:
       - order
       title: ApplicationOrderChangeRequest
-      type: object
-    Applicationnotificationresponse:
-      example:
-        status: OK
-      properties:
-        status:
-          type: string
-      required:
-      - status
-      title: Applicationnotificationresponse
       type: object
     CustomerBase:
       description: Customer data
@@ -1527,6 +1408,10 @@ components:
       title: deliveryType
       type: string
     DeliveryCarrier:
+      oneOf:
+      - $ref: '#/components/schemas/DeliveryCarrierDefault'
+      - $ref: '#/components/schemas/DeliveryCarrierCustom'
+    DeliveryCarrierDefault:
       enum:
       - CZ_POST_HAND
       - CZ_POST_OFFICE
@@ -1544,7 +1429,12 @@ components:
       - HDS_STANDARD
       - MALL_DEPOSIT
       example: DPD
-      title: deliverycarrier
+      title: Delivery Carrier Default
+      type: string
+    DeliveryCarrierCustom:
+      description: "For carriers not found in enumeration of customer ID, specify\
+        \ value as text."
+      maximum: 250
       type: string
     DocumentSerializer:
       description: Type of the document
@@ -1559,8 +1449,7 @@ components:
     DocumentRequest:
       description: "Attached document (e.g. invoice, credit note etc.)"
       example:
-        file: "[\"RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==\",\"https://www.partner.com/file?id=12345\"\
-          ]"
+        file: null
         extraData:
           variableSymbol: "1234567890"
         description: This is an invoice
@@ -1570,10 +1459,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DocumentSerializer'
         file:
-          description: Either URL to the file or base64 encoded file content
-          example: "[\"RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==\",\"https://www.partner.com/file?id=12345\"\
-            ]"
-          type: string
+          $ref: '#/components/schemas/FileRequest'
         description:
           description: File description
           example: This is an invoice
@@ -1653,10 +1539,11 @@ components:
       title: Financing Type
       type: string
     FileRequest:
-      description: Either URL to the file or base64 encoded file content
-      example: "[\"RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==\",\"https://www.partner.com/file?id=12345\"\
-        ]"
-      type: string
+      oneOf:
+      - example: RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==
+        type: string
+      - example: https://www.partner.com/file?id=12345
+        type: string
     Getpaymentsonspecificapplicationresponse:
       example:
         pagingInfo:
@@ -2042,20 +1929,18 @@ components:
           amount: 12590
           currency: CZK
         documents:
-        - file: "[\"RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==\",\"https://www.partner.com/file?id=12345\"\
-            ]"
+        - file: null
           extraData:
             variableSymbol: "1234567890"
           description: This is an invoice
           type: ""
-        - file: "[\"RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==\",\"https://www.partner.com/file?id=12345\"\
-            ]"
+        - file: null
           extraData:
             variableSymbol: "1234567890"
           description: This is an invoice
           type: ""
         deliveryType: DELIVERY_CARRIER
-        deliveryCarrier: DPD
+        deliveryCarrier: null
         reservationDate: 2017-07-15T00:00:00+02:00
         items:
         - null
@@ -2382,7 +2267,7 @@ components:
             currency: CZK
           merchantId: merchantId
           deliveryType: DELIVERY_CARRIER
-          deliveryCarrier: DPD
+          deliveryCarrier: null
           reservationDate: 2017-07-15T00:00:00+02:00
           items:
           - unitPrice:
@@ -2615,7 +2500,7 @@ components:
           currency: CZK
         merchantId: merchantId
         deliveryType: DELIVERY_CARRIER
-        deliveryCarrier: DPD
+        deliveryCarrier: null
         reservationDate: 2017-07-15T00:00:00+02:00
         items:
         - unitPrice:
@@ -2870,17 +2755,6 @@ components:
       required:
       - itemsPerPage
       title: PagingInfo
-      type: object
-    Paymentnotificationresponse:
-      example:
-        status: OK
-      properties:
-        status:
-          example: OK
-          type: string
-      required:
-      - status
-      title: Paymentnotificationresponse
       type: object
     RecurrenceUpdateRequest:
       example:
@@ -3195,10 +3069,7 @@ components:
     OrderItemRequest_allOf:
       properties:
         image:
-          description: Either URL to the file or base64 encoded file content
-          example: "[\"RmlsZSBjb250ZW50cy4gwq9cXyjjg4QpXy/Crw==\",\"https://www.partner.com/file?id=12345\"\
-            ]"
-          type: string
+          $ref: '#/components/schemas/FileRequest'
         unitPrice:
           $ref: '#/components/schemas/Amount'
         unitVat:

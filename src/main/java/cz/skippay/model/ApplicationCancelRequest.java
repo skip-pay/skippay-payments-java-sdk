@@ -49,7 +49,7 @@ import cz.skippay.JSON;
 /**
  * Specification of the reason why the application is cancelled.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-16T13:07:32.599404+02:00[Europe/Prague]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-06-26T12:24:35.068083+02:00[Europe/Prague]")
 public class ApplicationCancelRequest {
   /**
    * Reason of cancellation. Considered as &#x60;APPLICATION_CANCELLED_OTHER&#x60; if not set.
